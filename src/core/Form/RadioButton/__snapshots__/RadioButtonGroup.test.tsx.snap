@@ -3323,6 +3323,18 @@ exports[`props labelMode should match snapshot 1`] = `
   box-sizing: border-box;
 }
 
+.c5 {
+  position: absolute;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+}
+
 .c8 {
   vertical-align: baseline;
 }
@@ -3337,18 +3349,6 @@ exports[`props labelMode should match snapshot 1`] = `
 
 .c8.fi-icon--cursor-pointer * {
   cursor: inherit;
-}
-
-.c5 {
-  position: absolute;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  height: 1px;
-  width: 1px;
-  margin: -1px;
-  padding: 0;
-  border: 0;
-  overflow: hidden;
 }
 
 .c1 {
