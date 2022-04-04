@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`has matching snapshot 1`] = `
-.c8 {
+.c9 {
   line-height: 1.15;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -27,30 +27,30 @@ exports[`has matching snapshot 1`] = `
   cursor: pointer;
 }
 
-.c8:-moz-focusring {
+.c9:-moz-focusring {
   outline: 1px dotted ButtonText;
 }
 
-.c8::-moz-focus-inner {
+.c9::-moz-focus-inner {
   border-style: none;
   padding: 0;
 }
 
-.c8::-webkit-file-upload-button {
+.c9::-webkit-file-upload-button {
   -webkit-appearance: button;
   font: inherit;
 }
 
-.c8::-webkit-inner-spin-button {
+.c9::-webkit-inner-spin-button {
   height: auto;
 }
 
-.c8::-webkit-outer-spin-button {
+.c9::-webkit-outer-spin-button {
   height: auto;
 }
 
-.c8::before,
-.c8::after {
+.c9::before,
+.c9::after {
   box-sizing: border-box;
 }
 
@@ -83,7 +83,36 @@ exports[`has matching snapshot 1`] = `
   box-sizing: border-box;
 }
 
-.c5 {
+.c3 {
+  line-height: 1.15;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  font: 100% inherit;
+  line-height: 1;
+  text-align: left;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  vertical-align: baseline;
+  color: inherit;
+  background: none;
+  cursor: inherit;
+  display: block;
+  max-width: 100%;
+  word-wrap: normal;
+  word-break: normal;
+  white-space: normal;
+}
+
+.c3::before,
+.c3::after {
+  box-sizing: border-box;
+}
+
+.c6 {
   line-height: 1.15;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -106,17 +135,17 @@ exports[`has matching snapshot 1`] = `
   max-width: 100%;
 }
 
-.c5::-webkit-input-placeholder {
+.c6::-webkit-input-placeholder {
   color: inherit;
   opacity: 0.54;
 }
 
-.c5::before,
-.c5::after {
+.c6::before,
+.c6::after {
   box-sizing: border-box;
 }
 
-.c4 {
+.c5 {
   line-height: 1.15;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -140,36 +169,36 @@ exports[`has matching snapshot 1`] = `
   white-space: normal;
 }
 
-.c4::before,
-.c4::after {
+.c5::before,
+.c5::after {
   box-sizing: border-box;
 }
 
-.c10 {
+.c11 {
   vertical-align: baseline;
 }
 
-.c10.fi-icon {
+.c11.fi-icon {
   display: inline-block;
 }
 
-.c10 .fi-icon-base-fill {
+.c11 .fi-icon-base-fill {
   fill: currentColor;
 }
 
-.c10 .fi-icon-base-stroke {
+.c11 .fi-icon-base-stroke {
   stroke: currentColor;
 }
 
-.c10.fi-icon--cursor-pointer {
+.c11.fi-icon--cursor-pointer {
   cursor: pointer;
 }
 
-.c10.fi-icon--cursor-pointer * {
+.c11.fi-icon--cursor-pointer * {
   cursor: inherit;
 }
 
-.c11 {
+.c12 {
   position: absolute;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -181,7 +210,7 @@ exports[`has matching snapshot 1`] = `
   overflow: hidden;
 }
 
-.c12 {
+.c13 {
   color: hsl(0,0%,16%);
   -webkit-letter-spacing: 0;
   -moz-letter-spacing: 0;
@@ -208,12 +237,12 @@ exports[`has matching snapshot 1`] = `
   cursor: pointer;
 }
 
-.c12:focus {
+.c13:focus {
   outline: none;
   position: relative;
 }
 
-.c12:focus::after {
+.c13:focus::after {
   content: '';
   position: absolute;
   pointer-events: none;
@@ -229,17 +258,17 @@ exports[`has matching snapshot 1`] = `
   z-index: 9999;
 }
 
-.c12:hover {
+.c13:hover {
   background: linear-gradient(0deg,hsl(212,63%,45%) 0%,hsl(212,63%,49%) 100%);
 }
 
-.c12:active {
+.c13:active {
   background: hsl(212,63%,37%);
 }
 
-.c12.fi-button--disabled,
-.c12[disabled],
-.c12:disabled {
+.c13.fi-button--disabled,
+.c13[disabled],
+.c13:disabled {
   text-shadow: 0 1px 1px rgba(41,41,41,0.5);
   background: linear-gradient(0deg,hsl(202,7%,67%) 0%,hsl(202,7%,80%) 100%);
   -webkit-user-select: none;
@@ -249,41 +278,41 @@ exports[`has matching snapshot 1`] = `
   cursor: not-allowed;
 }
 
-.c12.fi-button--disabled::after {
+.c13.fi-button--disabled::after {
   border: none;
   box-shadow: none;
 }
 
-.c12.fi-button--fullwidth {
+.c13.fi-button--fullwidth {
   display: block;
   width: 100%;
 }
 
-.c12.fi-button--inverted {
+.c13.fi-button--inverted {
   background: none;
   background-color: hsl(212,63%,45%);
   border: 1px solid hsl(0,0%,100%);
   text-shadow: none;
 }
 
-.c12.fi-button--inverted:hover {
+.c13.fi-button--inverted:hover {
   background: linear-gradient(-180deg,rgba(255,255,255,0.1) 0%,rgba(255,255,255,0) 100%);
 }
 
-.c12.fi-button--inverted:active {
+.c13.fi-button--inverted:active {
   background: none;
   background-color: hsl(212,63%,45%);
 }
 
-.c12.fi-button--inverted.fi-button--disabled,
-.c12.fi-button--inverted[disabled],
-.c12.fi-button--inverted:disabled {
+.c13.fi-button--inverted.fi-button--disabled,
+.c13.fi-button--inverted[disabled],
+.c13.fi-button--inverted:disabled {
   opacity: 0.41;
   background: none;
   background-color: none;
 }
 
-.c12.fi-button--secondary {
+.c13.fi-button--secondary {
   color: hsl(212,63%,45%);
   background: none;
   background-color: hsl(0,0%,100%);
@@ -291,18 +320,18 @@ exports[`has matching snapshot 1`] = `
   text-shadow: none;
 }
 
-.c12.fi-button--secondary:hover {
+.c13.fi-button--secondary:hover {
   background: linear-gradient(-180deg,hsl(202,7%,93%) 0%,rgba(255,255,255,0) 100%);
 }
 
-.c12.fi-button--secondary:active {
+.c13.fi-button--secondary:active {
   background: none;
   background-color: hsl(202,7%,93%);
 }
 
-.c12.fi-button--secondary.fi-button--disabled,
-.c12.fi-button--secondary[disabled],
-.c12.fi-button--secondary:disabled {
+.c13.fi-button--secondary.fi-button--disabled,
+.c13.fi-button--secondary[disabled],
+.c13.fi-button--secondary:disabled {
   color: hsl(202,7%,67%);
   text-shadow: none;
   background: none;
@@ -310,7 +339,7 @@ exports[`has matching snapshot 1`] = `
   border-color: hsl(202,7%,67%);
 }
 
-.c12.fi-button--secondary-noborder {
+.c13.fi-button--secondary-noborder {
   color: hsl(212,63%,45%);
   background: none;
   background-color: hsl(0,0%,100%);
@@ -320,18 +349,18 @@ exports[`has matching snapshot 1`] = `
   background-color: transparent;
 }
 
-.c12.fi-button--secondary-noborder:hover {
+.c13.fi-button--secondary-noborder:hover {
   background: linear-gradient(-180deg,hsl(202,7%,93%) 0%,rgba(255,255,255,0) 100%);
 }
 
-.c12.fi-button--secondary-noborder:active {
+.c13.fi-button--secondary-noborder:active {
   background: none;
   background-color: hsl(202,7%,93%);
 }
 
-.c12.fi-button--secondary-noborder.fi-button--disabled,
-.c12.fi-button--secondary-noborder[disabled],
-.c12.fi-button--secondary-noborder:disabled {
+.c13.fi-button--secondary-noborder.fi-button--disabled,
+.c13.fi-button--secondary-noborder[disabled],
+.c13.fi-button--secondary-noborder:disabled {
   color: hsl(202,7%,67%);
   text-shadow: none;
   background: none;
@@ -339,7 +368,7 @@ exports[`has matching snapshot 1`] = `
   border-color: hsl(202,7%,67%);
 }
 
-.c12.fi-button--link {
+.c13.fi-button--link {
   color: hsl(212,63%,45%);
   color: hsl(212,63%,45%);
   background: none;
@@ -350,18 +379,18 @@ exports[`has matching snapshot 1`] = `
   border: none;
 }
 
-.c12.fi-button--link:hover {
+.c13.fi-button--link:hover {
   background: linear-gradient(-180deg,hsl(202,7%,93%) 0%,rgba(255,255,255,0) 100%);
 }
 
-.c12.fi-button--link:active {
+.c13.fi-button--link:active {
   background: none;
   background-color: hsl(202,7%,93%);
 }
 
-.c12.fi-button--link.fi-button--disabled,
-.c12.fi-button--link[disabled],
-.c12.fi-button--link:disabled {
+.c13.fi-button--link.fi-button--disabled,
+.c13.fi-button--link[disabled],
+.c13.fi-button--link:disabled {
   color: hsl(202,7%,67%);
   text-shadow: none;
   background: none;
@@ -369,23 +398,23 @@ exports[`has matching snapshot 1`] = `
   border-color: hsl(202,7%,67%);
 }
 
-.c12.fi-button--link:hover {
+.c13.fi-button--link:hover {
   background: linear-gradient(0deg,hsl(215,100%,97%),hsl(212,63%,98%));
 }
 
-.c12.fi-button--link:active {
+.c13.fi-button--link:active {
   background: linear-gradient(0deg,hsl(202,7%,93%),hsl(202,7%,97%));
 }
 
-.c12.fi-button--link.fi-button--disabled,
-.c12.fi-button--link[disabled],
-.c12.fi-button--link:disabled {
+.c13.fi-button--link.fi-button--disabled,
+.c13.fi-button--link[disabled],
+.c13.fi-button--link:disabled {
   color: hsl(202,7%,67%);
   background: none;
   background-color: hsl(202,7%,97%);
 }
 
-.c12 > .fi-button_icon {
+.c13 > .fi-button_icon {
   width: 16px;
   height: 16px;
   margin-right: 8px;
@@ -395,16 +424,16 @@ exports[`has matching snapshot 1`] = `
   transform: translateY(-0.1em);
 }
 
-.c12 > .fi-button_icon.fi-button_icon--right {
+.c13 > .fi-button_icon.fi-button_icon--right {
   margin-right: 0;
   margin-left: 8px;
 }
 
-.c12.fi-button--disabled > .fi-button_icon {
+.c13.fi-button--disabled > .fi-button_icon {
   cursor: not-allowed;
 }
 
-.c3.fi-label-text .fi-label-text_label-span {
+.c4.fi-label-text .fi-label-text_label-span {
   -webkit-letter-spacing: 0;
   -moz-letter-spacing: 0;
   -ms-letter-spacing: 0;
@@ -418,18 +447,23 @@ exports[`has matching snapshot 1`] = `
   font-size: 16px;
   line-height: 1.5;
   font-weight: 600;
-  display: block;
+  display: inline-block;
+  vertical-align: center;
   color: hsl(0,0%,16%);
 }
 
-.c3.fi-label-text .fi-label-text_label-span .fi-label-text_optionalText {
+.c4.fi-label-text .fi-label-text_label-span .fi-label-text_optionalText {
   font-family: 'Source Sans Pro','Helvetica Neue','Arial',sans-serif;
   font-size: 16px;
   line-height: 1.5;
   font-weight: 400;
 }
 
-.c9 {
+.c4.fi-label-text .fi-label-text_label-span .fi-tooltip {
+  margin-left: 6px;
+}
+
+.c10 {
   color: hsl(0,0%,16%);
   -webkit-letter-spacing: 0;
   -moz-letter-spacing: 0;
@@ -450,12 +484,12 @@ exports[`has matching snapshot 1`] = `
   background: hsl(212,63%,45%);
 }
 
-.c9:focus {
+.c10:focus {
   outline: 0;
   position: relative;
 }
 
-.c9:focus::after {
+.c10:focus::after {
   content: '';
   position: absolute;
   pointer-events: none;
@@ -472,7 +506,7 @@ exports[`has matching snapshot 1`] = `
   border-radius: 16px;
 }
 
-.c9.fi-chip {
+.c10.fi-chip {
   border-radius: 14px;
   padding: 2px 10px;
   color: hsl(0,0%,100%);
@@ -481,36 +515,36 @@ exports[`has matching snapshot 1`] = `
   display: inline-block;
 }
 
-.c9.fi-chip .fi-chip--content {
+.c10.fi-chip .fi-chip--content {
   display: block;
   word-break: break-word;
   overflow: hidden;
   line-height: 1.5em;
 }
 
-.c9.fi-chip--disabled.fi-chip {
+.c10.fi-chip--disabled.fi-chip {
   cursor: not-allowed;
   background: hsl(202,7%,67%);
 }
 
-.c9.fi-chip--disabled.fi-chip:hover,
-.c9.fi-chip--disabled.fi-chip:active {
+.c10.fi-chip--disabled.fi-chip:hover,
+.c10.fi-chip--disabled.fi-chip:active {
   background: hsl(202,7%,67%);
 }
 
-.c9.fi-chip--button {
+.c10.fi-chip--button {
   cursor: pointer;
 }
 
-.c9.fi-chip--button:hover {
+.c10.fi-chip--button:hover {
   background: hsl(212,63%,49%);
 }
 
-.c9.fi-chip--button:active {
+.c10.fi-chip--button:active {
   background: hsl(212,63%,37%);
 }
 
-.c9.fi-chip--removable {
+.c10.fi-chip--removable {
   padding-top: 2px;
   padding-right: 22px;
   padding-bottom: 2px;
@@ -518,7 +552,7 @@ exports[`has matching snapshot 1`] = `
   position: relative;
 }
 
-.c9.fi-chip--removable .fi-chip--icon {
+.c10.fi-chip--removable .fi-chip--icon {
   position: absolute;
   top: 8px;
   right: 10px;
@@ -526,15 +560,15 @@ exports[`has matching snapshot 1`] = `
   width: 12px;
 }
 
-.c9.fi-chip--removable .fi-chip--content {
+.c10.fi-chip--removable .fi-chip--content {
   margin-right: 10px;
 }
 
-.c9.fi-chip--removable.fi-chip--disabled .fi-chip--icon {
+.c10.fi-chip--removable.fi-chip--disabled .fi-chip--icon {
   cursor: not-allowed;
 }
 
-.c7 {
+.c8 {
   -webkit-letter-spacing: 0;
   -moz-letter-spacing: 0;
   -ms-letter-spacing: 0;
@@ -551,13 +585,13 @@ exports[`has matching snapshot 1`] = `
   padding-top: 5px;
 }
 
-.c7 .fi-chip-list_content_wrapper > * {
+.c8 .fi-chip-list_content_wrapper > * {
   margin-right: 10px;
   margin-top: 10px;
   padding-right: -10px;
 }
 
-.c7 .fi-chip-list_content_wrapper {
+.c8 .fi-chip-list_content_wrapper {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -568,7 +602,7 @@ exports[`has matching snapshot 1`] = `
   width: 100%;
 }
 
-.c6 {
+.c7 {
   -webkit-letter-spacing: 0;
   -moz-letter-spacing: 0;
   -ms-letter-spacing: 0;
@@ -587,11 +621,11 @@ exports[`has matching snapshot 1`] = `
   line-height: 20px;
 }
 
-.c6.fi-status-text {
+.c7.fi-status-text {
   display: block;
 }
 
-.c6.fi-status-text.fi-status-text--error {
+.c7.fi-status-text.fi-status-text--error {
   color: hsl(3,59%,48%);
 }
 
@@ -860,11 +894,11 @@ exports[`has matching snapshot 1`] = `
         class="c0 fi-filter-input_wrapper"
       >
         <label
-          class="c0 c3 fi-filter-input_label--visible fi-label-text"
+          class="c3 c4 fi-filter-input_label--visible fi-label-text"
           id="1-label"
         >
           <span
-            class="c4 fi-label-text_label-span"
+            class="c5 fi-label-text_label-span"
           >
             MultiSelect
           </span>
@@ -888,7 +922,7 @@ exports[`has matching snapshot 1`] = `
               aria-multiline="false"
               autocapitalize="none"
               autocomplete="off"
-              class="c5 fi-filter-input_input"
+              class="c6 fi-filter-input_input"
               id="1"
               placeholder="Choose your tool(s)"
               spellcheck="false"
@@ -899,13 +933,13 @@ exports[`has matching snapshot 1`] = `
           <span
             aria-atomic="true"
             aria-live="assertive"
-            class="c4 c6 fi-status-text"
+            class="c5 c7 fi-status-text"
           />
         </div>
       </div>
     </div>
     <div
-      class="c0 fi-chip-list c7"
+      class="c0 fi-chip-list c8"
       id="2"
     >
       <div
@@ -913,17 +947,17 @@ exports[`has matching snapshot 1`] = `
       >
         <button
           aria-disabled="true"
-          class="c8 fi-chip fi-chip--button c9 fi-chip--disabled fi-chip--removable"
+          class="c9 fi-chip fi-chip--button c10 fi-chip--disabled fi-chip--removable"
           type="button"
         >
           <span
-            class="c4 fi-chip--content"
+            class="c5 fi-chip--content"
           >
             Powersaw
           </span>
           <svg
             aria-hidden="true"
-            class="fi-icon c10 fi-chip--icon fi-icon--cursor-pointer"
+            class="fi-icon c11 fi-chip--icon fi-icon--cursor-pointer"
             focusable="false"
             height="1em"
             viewBox="0 0 24 24"
@@ -938,24 +972,24 @@ exports[`has matching snapshot 1`] = `
             />
           </svg>
           <span
-            class="c4 c11 fi-visually-hidden"
+            class="c5 c12 fi-visually-hidden"
           >
             Remove
           </span>
         </button>
         <button
           aria-disabled="false"
-          class="c8 fi-chip fi-chip--button c9 fi-chip--removable"
+          class="c9 fi-chip fi-chip--button c10 fi-chip--removable"
           type="button"
         >
           <span
-            class="c4 fi-chip--content"
+            class="c5 fi-chip--content"
           >
             Hammer
           </span>
           <svg
             aria-hidden="true"
-            class="fi-icon c10 fi-chip--icon fi-icon--cursor-pointer"
+            class="fi-icon c11 fi-chip--icon fi-icon--cursor-pointer"
             focusable="false"
             height="1em"
             viewBox="0 0 24 24"
@@ -970,24 +1004,24 @@ exports[`has matching snapshot 1`] = `
             />
           </svg>
           <span
-            class="c4 c11 fi-visually-hidden"
+            class="c5 c12 fi-visually-hidden"
           >
             Remove
           </span>
         </button>
         <button
           aria-disabled="false"
-          class="c8 fi-chip fi-chip--button c9 fi-chip--removable"
+          class="c9 fi-chip fi-chip--button c10 fi-chip--removable"
           type="button"
         >
           <span
-            class="c4 fi-chip--content"
+            class="c5 fi-chip--content"
           >
             Rake
           </span>
           <svg
             aria-hidden="true"
-            class="fi-icon c10 fi-chip--icon fi-icon--cursor-pointer"
+            class="fi-icon c11 fi-chip--icon fi-icon--cursor-pointer"
             focusable="false"
             height="1em"
             viewBox="0 0 24 24"
@@ -1002,7 +1036,7 @@ exports[`has matching snapshot 1`] = `
             />
           </svg>
           <span
-            class="c4 c11 fi-visually-hidden"
+            class="c5 c12 fi-visually-hidden"
           >
             Remove
           </span>
@@ -1011,13 +1045,13 @@ exports[`has matching snapshot 1`] = `
     </div>
     <button
       aria-disabled="false"
-      class="c8 fi-button c12 fi-multiselect_removeAllButton fi-button--link"
+      class="c9 fi-button c13 fi-multiselect_removeAllButton fi-button--link"
       tabindex="0"
       type="button"
     >
       <svg
         aria-hidden="true"
-        class="fi-icon c10 fi-button_icon fi-icon--cursor-pointer"
+        class="fi-icon c11 fi-button_icon fi-icon--cursor-pointer"
         focusable="false"
         height="1em"
         viewBox="0 0 24 24"
