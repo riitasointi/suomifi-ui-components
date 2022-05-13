@@ -89,6 +89,7 @@ const defaultSelectedTools = [
 
 <>
   <MultiSelect
+    allowItemAddition
     labelText="Tools"
     hintText="You can filter options by typing in the field"
     items={tools}

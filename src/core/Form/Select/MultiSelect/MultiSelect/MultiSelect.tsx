@@ -19,6 +19,7 @@ import { MultiSelectChipList } from '../MultiSelectChipList/MultiSelectChipList'
 import { MultiSelectRemoveAllButton } from '../MultiSelectRemoveAllButton/MultiSelectRemoveAllButton';
 import { baseStyles } from './MultiSelect.baseStyles';
 import { InputToggleButton } from '../../../InputToggleButton/InputToggleButton';
+import { SelectSuggestion } from '../../BaseSelect/SelectSuggestion/SelectSuggestion';
 
 const baseClassName = 'fi-multiselect';
 const multiSelectClassNames = {
@@ -106,15 +107,18 @@ export interface MultiSelectProps<T extends MultiSelectData> {
   ariaOptionChipRemovedText: string;
   /** Disable the input */
   disabled?: boolean;
+  /** Whether the user can add their own custom items as the input's value */
+  allowItemAddition?: boolean;
 }
 
 interface MultiSelectState<T extends MultiSelectData> {
   filterInputValue: string;
   filteredItems: T[];
+  computedItems: Array<T & MultiSelectData>;
   showPopover: boolean;
   showOptionsAvailableText: boolean;
   focusedDescendantId: string | null;
-  selectedItems: T[];
+  selectedItems: Array<T & MultiSelectData>;
   chipRemovalAnnounceText: string;
 }
 
@@ -147,6 +151,7 @@ class BaseMultiSelect<T> extends Component<
       ? this.props.selectedItems || []
       : this.props.defaultSelectedItems || [],
     chipRemovalAnnounceText: '',
+    computedItems: this.props.items,
   };
 
   static getDerivedStateFromProps<U>(
@@ -182,6 +187,10 @@ class BaseMultiSelect<T> extends Component<
           onItemSelect,
           selectedItems: controlledItems,
         } = prevProps;
+        let userAddedSelectedItems: Array<T & MultiSelectData> =
+          prevState.selectedItems.filter((si) =>
+            prevProps.items.every((pi) => pi.uniqueItemId !== si.uniqueItemId),
+          );
         if (!item.disabled) {
           if (onItemSelect) {
             onItemSelect(item.uniqueItemId);
@@ -199,16 +208,29 @@ class BaseMultiSelect<T> extends Component<
               if (onItemSelectionsChange) {
                 onItemSelectionsChange(newSelectedItems);
               }
+              userAddedSelectedItems = userAddedSelectedItems.filter(
+                (uasi) => uasi.uniqueItemId !== item.uniqueItemId,
+              );
               return {
                 selectedItems: newSelectedItems,
+                computedItems: prevProps.items.concat(userAddedSelectedItems),
               };
             }
             const newSelectedItems = prevState.selectedItems.concat([item]);
             if (onItemSelectionsChange) {
               onItemSelectionsChange(newSelectedItems);
             }
+
+            const itemIsNotFromPropItems = prevProps.items.every(
+              (propItem) => propItem.uniqueItemId !== item.uniqueItemId,
+            );
+            if (itemIsNotFromPropItems) {
+              userAddedSelectedItems = userAddedSelectedItems.concat([item]);
+            }
+
             return {
               selectedItems: newSelectedItems,
+              computedItems: prevProps.items.concat(userAddedSelectedItems),
             };
           }
         }
@@ -237,7 +259,10 @@ class BaseMultiSelect<T> extends Component<
         if (onItemSelectionsChange) {
           onItemSelectionsChange(disabledItems);
         }
-        return { selectedItems: disabledItems };
+        return {
+          selectedItems: disabledItems,
+          computedItems: prevProps.items,
+        };
       },
     );
     if (this.filterInputRef && this.filterInputRef.current) {
@@ -279,6 +304,11 @@ class BaseMultiSelect<T> extends Component<
       const focusInMultiSelect =
         focusInPopover || focusInInput || focusInToggleButton;
 
+      const userAddedSelectedItems: Array<T & MultiSelectData> =
+        this.state.selectedItems.filter((si) =>
+          this.props.items.every((pi) => pi.uniqueItemId !== si.uniqueItemId),
+        );
+
       if (!focusInMultiSelect) {
         this.setState(
           (
@@ -290,6 +320,7 @@ class BaseMultiSelect<T> extends Component<
             showPopover: false,
             showOptionsAvailableText: false,
             focusedDescendantId: null,
+            computedItems: prevProps.items.concat(userAddedSelectedItems),
           }),
         );
       }
@@ -297,13 +328,18 @@ class BaseMultiSelect<T> extends Component<
   };
 
   private handleKeyDown = (event: React.KeyboardEvent) => {
-    const { filteredItems: items, focusedDescendantId } = this.state;
+    const {
+      filteredItems: items,
+      focusedDescendantId,
+      filterInputValue,
+    } = this.state;
     const index = items.findIndex(
       ({ uniqueItemId }) => uniqueItemId === focusedDescendantId,
     );
 
     const getNextIndex = () => (index + 1) % items.length;
-    const getPreviousIndex = () => (index - 1 + items.length) % items.length;
+    const getPreviousIndex = () =>
+      index > -1 ? (index - 1 + items.length) % items.length : items.length - 1;
 
     const getNextItem = () => items[getNextIndex()];
     const getPreviousItem = () => items[getPreviousIndex()];
@@ -311,7 +347,16 @@ class BaseMultiSelect<T> extends Component<
     switch (event.key) {
       case 'ArrowDown': {
         this.setState({ showPopover: true });
-        const nextItem = getNextItem();
+        const nextItem =
+          this.props.allowItemAddition &&
+          index === items.length - 1 &&
+          filterInputValue !== '' &&
+          !this.inputValueInItems()
+            ? {
+                uniqueItemId: filterInputValue.toLowerCase(),
+                labelText: filterInputValue,
+              }
+            : getNextItem();
         if (nextItem) {
           this.setState({ focusedDescendantId: nextItem.uniqueItemId });
         }
@@ -320,7 +365,16 @@ class BaseMultiSelect<T> extends Component<
 
       case 'ArrowUp': {
         this.setState({ showPopover: true });
-        const previousItem = getPreviousItem();
+        const previousItem =
+          this.props.allowItemAddition &&
+          (!index || index === 0) &&
+          filterInputValue !== '' &&
+          !this.inputValueInItems()
+            ? {
+                uniqueItemId: filterInputValue.toLowerCase(),
+                labelText: filterInputValue,
+              }
+            : getPreviousItem();
         if (previousItem) {
           this.setState({ focusedDescendantId: previousItem.uniqueItemId });
         }
@@ -332,8 +386,16 @@ class BaseMultiSelect<T> extends Component<
           const focusedItem = items.find(
             ({ uniqueItemId }) => uniqueItemId === focusedDescendantId,
           );
+
           if (focusedItem) {
             this.handleItemSelection(focusedItem);
+          } else {
+            // @ts-expect-error: Cannot create an object which implements unknown generic type T
+            const userAddedItem: T & MultiSelectData = {
+              uniqueItemId: filterInputValue.toLowerCase(),
+              labelText: filterInputValue,
+            };
+            this.handleItemSelection(userAddedItem);
           }
         }
         break;
@@ -386,6 +448,11 @@ class BaseMultiSelect<T> extends Component<
       disabled: true,
     }));
 
+  private inputValueInItems = () =>
+    !!this.state.computedItems.find(
+      (ci) => ci.uniqueItemId === this.state.filterInputValue.toLowerCase(),
+    );
+
   render() {
     const {
       filteredItems,
@@ -394,13 +461,13 @@ class BaseMultiSelect<T> extends Component<
       selectedItems,
       filterInputValue,
       chipRemovalAnnounceText,
+      computedItems,
     } = this.state;
 
     const {
       id,
       className,
       theme,
-      items: propItems,
       labelText,
       optionalText,
       hintText,
@@ -423,6 +490,7 @@ class BaseMultiSelect<T> extends Component<
       ariaOptionsAvailableText,
       ariaOptionChipRemovedText,
       disabled,
+      allowItemAddition,
       ...passProps
     } = this.props;
 
@@ -465,7 +533,7 @@ class BaseMultiSelect<T> extends Component<
                   labelText={labelText}
                   optionalText={optionalText}
                   hintText={hintText}
-                  items={propItems}
+                  items={computedItems}
                   onFilter={(filtered) =>
                     this.setState({ filteredItems: filtered })
                   }
@@ -523,29 +591,59 @@ class BaseMultiSelect<T> extends Component<
                   focusedDescendantId={ariaActiveDescendant}
                   aria-multiselectable="true"
                 >
-                  {filteredItemsWithChecked.length > 0 ? (
-                    filteredItemsWithChecked.map((item) => {
-                      const isCurrentlySelected =
-                        item.uniqueItemId === focusedDescendantId;
-                      return (
-                        <SelectItem
-                          hasKeyboardFocus={isCurrentlySelected}
-                          key={`${item.uniqueItemId}_${item.checked}`}
-                          id={`${id}-${item.uniqueItemId}`}
-                          checked={item.checked}
-                          disabled={item.disabled}
+                  <HtmlDiv>
+                    {filteredItemsWithChecked.length > 0 &&
+                      filteredItemsWithChecked.map((item) => {
+                        const isCurrentlySelected =
+                          item.uniqueItemId === focusedDescendantId;
+                        return (
+                          <SelectItem
+                            hasKeyboardFocus={isCurrentlySelected}
+                            key={`${item.uniqueItemId}_${item.checked}`}
+                            id={`${id}-${item.uniqueItemId}`}
+                            checked={item.checked}
+                            disabled={item.disabled}
+                            onClick={() => {
+                              this.handleItemSelection(item);
+                            }}
+                            hightlightQuery={this.filterInputRef.current?.value}
+                          >
+                            {item.labelText}
+                          </SelectItem>
+                        );
+                      })}
+
+                    {filteredItemsWithChecked.length === 0 &&
+                      !allowItemAddition && (
+                        <SelectEmptyItem>{noItemsText}</SelectEmptyItem>
+                      )}
+
+                    {filterInputValue !== '' &&
+                      !this.inputValueInItems() &&
+                      allowItemAddition && (
+                        <SelectSuggestion
+                          hintText="Add custom item"
+                          hasKeyboardFocus={
+                            filterInputValue === focusedDescendantId
+                          }
+                          id={`${id}-${filterInputValue.toLowerCase()}`}
                           onClick={() => {
+                            // @ts-expect-error: Cannot create an object which implements unknown generic type T
+                            const item: T & MultiSelectData = {
+                              labelText: filterInputValue,
+                              uniqueItemId: filterInputValue.toLowerCase(),
+                            };
                             this.handleItemSelection(item);
+                            this.setState({
+                              focusedDescendantId:
+                                filterInputValue.toLowerCase(),
+                            });
                           }}
-                          hightlightQuery={this.filterInputRef.current?.value}
                         >
-                          {item.labelText}
-                        </SelectItem>
-                      );
-                    })
-                  ) : (
-                    <SelectEmptyItem>{noItemsText}</SelectEmptyItem>
-                  )}
+                          {filterInputValue}
+                        </SelectSuggestion>
+                      )}
+                  </HtmlDiv>
                 </SelectItemList>
               </Popover>
             )}
