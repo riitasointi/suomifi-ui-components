@@ -10,10 +10,10 @@ import { default as styled } from 'styled-components';
 import classnames from 'classnames';
 import { SuomifiThemeProp, SuomifiThemeConsumer } from '../../../../theme';
 import { HtmlDivWithRef, HtmlUlWithRef } from '../../../../../reset';
-import { SelectItemProps } from '../SelectItem/SelectItem';
+// import { SelectItemProps } from '../SelectItem/SelectItem';
 import { baseStyles } from './SelectItemList.baseStyles';
-import { SelectEmptyItemProps } from '../SelectEmptyItem/SelectEmptyItem';
-import { SelectSuggestionProps } from '../SelectSuggestion/SelectSuggestion';
+// import { SelectEmptyItemProps } from '../SelectEmptyItem/SelectEmptyItem';
+// import { SelectSuggestionProps } from '../SelectSuggestion/SelectSuggestion';
 
 const baseClassName = 'fi-select-item-list';
 
